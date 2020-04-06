@@ -1,0 +1,61 @@
+  GIT LOCAL:
+ 
+	Working Directory
+	Staging area
+	Repository - .git folder
+	
+GIT REPO:
+	Remote repo which we created in GITHIB GUI
+ 
+ Git config --list
+  git clone url
+  ls -l
+  cd GlitBlit-Demo/
+  git status
+  echo "Glit Blit Commands" >> start.txt
+  cat start.txt
+  git status
+  git add start.txt-------add the file to staging directory
+  git status
+  git commit -m "Start.txt file added" --commit the file to the repo
+  git status
+  git push origin master --push the file from local to remote repo (origin)
+  git status
+
+ git add . (add all the files in current directory)
+ git fork 
+ 
+ Before push the changes to remote repo,best practice to pull the code and make sure they are upto-date
+ 
+  Basic Git Workflow (add, commit,pull & push)
+  
+  Recursively create folder :mkdir -p Test/test1/test2
+  
+  Recursively add files in git : git add .
+  
+  recursively remove files inside directory: rm -rf Test
+  
+  Rename the file in git: git mv oldfilename newfilename
+  
+  delete the files in git : git rm filename
+  
+  Remove from stage (unstage) git reset HEAD filename
+  
+  To recover the deleted files already in git not yet commit/push after delete : git checkout --filename
+  
+  Git add -A
+  
+  Git log
+  git log --oneline --graph --decorate
+  git log --filename ()
+  git log --follow --path of the filename
+  git show commitid
+  git config --global alias.his "log --all --oneline --graph --decorate"
+  vi ~/.gitconfig
+  vi .gitignore
+  
+  List of branches : Git branch -a
+  Delete the local branch : git branch -d name of branch
+  Delete the remote branch :  git push origin --delete <branch_name>
+  Change the branch : git checkout branchname
+
