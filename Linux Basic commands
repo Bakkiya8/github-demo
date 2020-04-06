@@ -1,1 +1,12 @@
 
+Grep ----Global regex print
+Used to find the text/numbers from the files
+Default case sensitive
+
+grep "bhakya" filename ---filters the name in the given file
+grep -w "bhakya" filename -- filters the exact name in the given file
+grep wi "bhakya" filename --- irrespective of case sensitive it filters the data
+grep win "bhakya" filename ---include number in which the text can be found
+grep win "bhakya" ./* --- Searches in all directories 
+grep win "bhakya" . --- Search in all files
+history | grep "branch" | grep "git branch -a"
