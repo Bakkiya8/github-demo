@@ -1,0 +1,18 @@
+Promethus :
+
+Bridge between Jenkins and Grafana (Monitoring tool)
+
+Promethus is a time series database which is designed to monitor targets like Servers,database,stand alone VM's
+
+While Prometheus is mostly a metrics gathering tool, Grafana is used to potray those data in charts, thus providing a visual representation.
+
+Grafana:
+
+It is a open source multiplatform interactive visualization tool which provides graphs,charts and dashboards to end users.
+
+
+Microservices:
+
+Which overcome Monolithic architecture (like SRM app--Keep single backend DB for all functionality)
+
+Having seperate logic functions (several small applications) which will be communicated via HTTP (API)
