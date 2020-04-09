@@ -1,0 +1,45 @@
+SSH - Secure shell --Passwordless Authentication
+
+In order to achieve SSH connection,both the server should have same user name's.
+If we want to make passwordless bidirectionally , we need to do
+  1) same user (bhakya) in both the servers
+  2) Generate ssh-keygen and copy it to another server and do vice versa
+
+visudo ---give permission 
+/home/user
+
+useradd bhakya
+passwd bhakya
+
+List of users: cat /etc/passwd ---(should be as root user)
+su -l bhakya -- switch to user
+Visudo
+add the user (replace the wheel to our user)
+
+ctrl+D = logout
+Shft+G = Go to last line in file
+DD --delete the line in VI file
+
+vi /etc/ssh/sshd_config
+without press Insert -----/password (serach the text in config file)
+Uncomment the password Authentication yes
+and comment the password Authentication No
+
+service sshd restart -- inorder to reflect the above changes
+Switch to user and do the below
+ssh-keygen ---Generate Key file
+cd /.ssh
+ssh-copy-id private ip of server want to connect
+ssh privateip ---we can connect that server without pwd
+
+After copying ssh key, go to second server 
+we can see the .ssh folder inside the user home directory
+authorized keys
+
+Read - 4
+write - 2
+Execute - 1
+hostname -i
+chown -R diya:diya
+rsync --resume the copies once it broken
+scp -- copy from initial once it fails
