@@ -58,4 +58,15 @@ GIT REPO:
   Delete the local branch : git branch -d name of branch
   Delete the remote branch :  git push origin --delete <branch_name>
   Change the branch : git checkout branchname
+  
+  Merging and Rebasing: take commits from feature branch and merge into master
+
+Rebasing: Used to edit/update/remove the commits using git rebase -i HEAD~3(show last 3 commit messages)
+
+Go to feature branch : git checkout -b FeatureBranchName
+Git rebase master
+
+To know more : https://www.themoderncoder.com/a-better-git-workflow-with-rebase/
+
+https://www.themoderncoder.com/rewriting-git-history/
 
