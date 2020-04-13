@@ -10,3 +10,5 @@ grep win "bhakya" filename ---include number in which the text can be found
 grep win "bhakya" ./* --- Searches in all directories 
 grep win "bhakya" . --- Search in all files
 history | grep "branch" | grep "git branch -a"
+
+netstat -nltp
