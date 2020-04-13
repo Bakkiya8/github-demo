@@ -1,0 +1,36 @@
+Connect linux slave machine
+
+Install java
+yum install java-1.8* -y
+
+Set Java Home
+find /usr/lib/jvm -name javac
+copy second path
+cd ~
+vi .bash_profile
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.amzn2.0.1.x86_64
+PATH=$PATH:$JAVA_HOME:$HOME/bin
+echo $PATH
+
+useradd test
+passwd test
+visudo ----add the user
+vi /etc/shh/sshd_config
+make password Authentication yes
+service sshd restart
+
+Add credentails ----trust option
+
+cat /etc/group
+id user
+
+Another way to connect linux user
+create a user in slave
+setup home directory
+ssh-key-gen
+cd .sshd
+ssh-copy-id slaveprivateip
+check authorized keys created
+copy id_rsa and paste it in jenkins manage nodes credentails
+
+
