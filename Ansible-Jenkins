@@ -1,0 +1,30 @@
+Ansible installation on master
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install ansible -y
+create new user
+visudo --add that user
+vi /etc/shh/sshd_config---make passwd auth yes
+restart
+switch to ansible user
+ssh-key-gen ---generate keypair
+cd .ssh
+ssh-copy-id targetserver_private-ip (if you want to copy to slave,need to create same user in that node also)
+check authorized_keys created (ensure copied the keys successfully)
+ansible all -m ping (Check ansible installed)
+vi /etc/ansible/hosts 
+delete the defaults available (d+shft G) and provide privateip of machine where we installed ansible and save
+
+Install ansible plugin
+generate pipeline syntax and provide ansible credentials
+
+Permission denied error
+/etc/ansible/ansible.cfg
+chmod 700 /home/ansible
+
+
+  stage('Run Ansible playbook'){
+    steps{
+      ansiblePlaybook(credentialsId: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansibleplay.yml')
+    }
+  }
+
