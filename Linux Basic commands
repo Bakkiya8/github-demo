@@ -12,3 +12,4 @@ grep win "bhakya" . --- Search in all files
 history | grep "branch" | grep "git branch -a"
 
 netstat -nltp
+nmap - check ports 
