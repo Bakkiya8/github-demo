@@ -13,3 +13,17 @@ history | grep "branch" | grep "git branch -a"
 
 netstat -nltp
 nmap - check ports 
+File permissions:
+drwx-rw-r--
+ownerpermission---group---others
+d----type of file (whether it is directory or file)
+r--read(4)
+w--write(2)
+X--Execute(1)
+rwx--7
+
+To change the file permissions:
+chmod 700 (owner is having full execute permissions,no group can access)
+chmod 777 (full permission for owner,group and others)
+-rwxrwxrwx = 777
+
