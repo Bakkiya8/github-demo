@@ -1,0 +1,35 @@
+#!/bin/bash
+
+export https_proxy=https://localhost:3128
+export http_proxy=https://localhost:3128
+
+PageID=$(curl -u $CONFLUENCE_USER:$CONFLUENCE_STAGING_PWD -X GET "https://confluence-staging-lv.valiantys.net/rest/api/content?title=${Confluence_Title}&spaceKey=${Confluence_Space_Key}&expand=history"  | python -mjson.tool | grep '\"id\"' | grep -o -E '[0-9]+')
+echo $PageID
+
+#echo "https://confluence-staging-lv.valiantys.net/rest/api/content/$PageID?expand=body.storage"
+
+curl -u $CONFLUENCE_USER:$CONFLUENCE_STAGING_PWD "https://confluence-staging-lv.valiantys.net/rest/api/content/$PageID?expand=version" | python -mjson.tool > version.txt
+PAGE_VERSION=$(grep -Po '(?<="number": )[0-9]+' version.txt)
+#echo "$(<version.txt)" 
+rm version.txt
+PAGE_VERSION=$((PAGE_VERSION+1))
+echo "page version is $PAGE_VERSION"
+
+curl -u $CONFLUENCE_USER:$CONFLUENCE_STAGING_PWD "https://confluence-staging-lv.valiantys.net/rest/api/content/$PageID?expand=body.storage" | python -mjson.tool > body.txt
+#more body.txt
+PAGE_BODY="$(grep -Po '(?<="value": ")[^"]+' body.txt)"
+#echo "$(<body.txt)" 
+rm body.txt
+
+#echo $PAGE_BODY
+#TEXT=$(<test.txt)
+TEXT='<p>'${Update_text}'</p>'
+TEXT=$PAGE_BODY$TEXT
+echo $TEXT
+
+echo '{"id":"'$PageID'","type":"page","title":"'${Confluence_Title}'","space":{"key":"'${Confluence_Space_Key}'"},"body":{"storage":{"value":"'$TEXT'","representation":"storage"}},"version":{"number":'$PAGE_VERSION'}}' > update.json
+echo "$(<update.json)" 
+
+#Update the page 
+curl -u $CONFLUENCE_USER:$CONFLUENCE_STAGING_PWD -X PUT -H 'Content-Type: application/json' -d '@update.json' "https://confluence-staging-lv.valiantys.net/rest/api/content/$PageID" | python -mjson.tool 
+rm update.json 
