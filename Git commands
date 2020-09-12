@@ -45,6 +45,32 @@ GIT REPO:
   
   Git add -A
   
+  
+Git stash:
+
+save our local changes temporarily
+git stash
+git stash pop
+
+Staging area -- ready for commit
+git fetch -- fetching the changes from remote tht would not be reflected in local 
+git pull -- git fetch and merge
+
+when will go for fetch?
+if you want to fetch the remote changes (like new branch added, new file added) to local (no need to replace our local files)
+
+Merge - when we merge we didn't get the history of logs
+rebase - when we merge we will get the history of logs
+
+cheerypick - choose the commit from one branch to another
+git cheerypick <hashcode> hexadecimal from git log
+
+How to change the committed files?
+git commit amend <previous commit msg>
+
+Rollback commited code
+git reset
+  
   Git log
   git log --oneline --graph --decorate
   git log --filename ()
