@@ -27,3 +27,29 @@ chmod 700 (owner is having full execute permissions,no group can access)
 chmod 777 (full permission for owner,group and others)
 -rwxrwxrwx = 777
 
+
+which version kernel/OS
+uname -a
+
+current system ip
+ifconfig
+
+free disk space
+df  -ah
+df -i
+
+manage services on system
+service docker status
+systemctl status docker
+
+size of directory
+du -sh directoryname (disk use)
+
+check open ports
+netstat -tulp 
+t --tcp
+u --udp
+
+check cpu usage for process
+ps aux | grep nginx
+
